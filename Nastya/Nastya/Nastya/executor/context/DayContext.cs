@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Nastya.Nastya.logger;
 using Nastya.Nastya.messenger.userId;
-using Nastya.Nastya.vk;
 
 namespace Nastya.Nastya.executor.context
 {

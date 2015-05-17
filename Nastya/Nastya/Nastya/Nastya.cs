@@ -8,7 +8,7 @@ using Nastya.Nastya.config;
 using Nastya.Nastya.executor;
 using Nastya.Nastya.executor.context;
 using Nastya.Nastya.logger;
-using Nastya.Nastya.vk;
+using Nastya.Nastya.messenger.vk;
 
 namespace Nastya.Nastya
 {

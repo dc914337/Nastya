@@ -7,7 +7,6 @@ using Nastya.Nastya.executor.commands.wordSequenceCommands;
 using Nastya.Nastya.executor.commands.wordSequenceCommands.dayCommands;
 using Nastya.Nastya.executor.context;
 using Nastya.Nastya.messenger;
-using Nastya.Nastya.vk;
 
 namespace Nastya.Nastya.executor.commands
 {

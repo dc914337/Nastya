@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Nastya.Nastya;
@@ -10,12 +13,12 @@ using Nastya.Nastya.config.mapper;
 using Nastya.Nastya.executor;
 using Nastya.Nastya.executor.commands;
 using Nastya.Nastya.logger;
-using Nastya.Nastya.vk;
 using Nastya;
 using Nastya.Nastya.executor.commands.wordSequenceCommands;
 using Nastya.Nastya.executor.commands.wordSequenceCommands.dayCommands;
 using Nastya.Nastya.executor.commands.wordSequenceCommands.wordseqence;
 using Nastya.Nastya.executor.commands.wordSequenceCommands.wordseqence.comparer;
+using Nastya.Nastya.messenger;
 using Nastya.Nastya.messenger.userId;
 
 namespace Nastya
@@ -24,9 +27,16 @@ namespace Nastya
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine(CreateSampleConfig());
-        
+            Stack stack = Stack.Synchronized(new Stack());
 
+
+            //Thread addThread = new Thread(() => AddToStackThread(stack));
+            //Thread foreachThread = new Thread(() => ForeachThread(stack));
+            //addThread.Start();
+            //foreachThread.Start();
+
+            //Console.WriteLine(CreateSampleConfig());
+            Console.ReadKey();
             Logger.AddTypeToOutput(MessageType.Debug);
             Logger.AddTypeToOutput(MessageType.Error);
             Logger.AddTypeToOutput(MessageType.Verbose);
@@ -34,6 +44,38 @@ namespace Nastya
             var bot = new Nastya.Nastya(@"C: \Users\Smirnyaga\Desktop\testNastyaCfg.xml");
             bot.Start().Wait();
         }
+
+
+        private static void AddToStackThread(Stack stack)
+        {
+            Random rnd = new Random();
+            do
+            {
+                lock (stack)
+                {
+                    stack.Push(rnd.Next());
+                    Console.WriteLine("added");
+                }
+            } while (true);
+        }
+
+        private static void ForeachThread(Stack stack)
+        {
+            do
+            {
+                int count = 0;
+                lock (stack)
+                {
+                    foreach (var VARIABLE in stack)
+                    {
+                        count++;
+                    }
+                }
+                Console.WriteLine(count);
+            } while (true);
+        }
+
+
 
 
         static String CreateSampleConfig()

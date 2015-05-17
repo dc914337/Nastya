@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Nastya.Nastya.executor.context;
 using Nastya.Nastya.messenger;
-using Nastya.Nastya.vk;
 
 namespace Nastya.Nastya.executor
 {

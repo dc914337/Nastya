@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using Nastya.Nastya.logger;
-using Nastya.Nastya.vk;
 
 namespace Nastya.Nastya.executor.context
 {

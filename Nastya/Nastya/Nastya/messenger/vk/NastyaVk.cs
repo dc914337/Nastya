@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml;
-using Nastya.Nastya.config;
 using Nastya.Nastya.logger;
-using Nastya.Nastya.messenger;
 using Nastya.Nastya.messenger.userId;
 using VKSharp;
 using VKSharp.Core.Enums;
 using VKSharp.Data.Api;
 using MessageType = Nastya.Nastya.logger.MessageType;
 
-namespace Nastya.Nastya.vk
+namespace Nastya.Nastya.messenger.vk
 {
     public class NastyaVk : IMessenger
     {
-        private const int vApiDelay = 333; // delay between 2 vk api requests(3 in a second)
+        private const int ApiDelay = 333; // delay between 2 vk api requests(3 in a second)
         private readonly VKApi _api;
-        private Random _rnd = new Random();
+        private readonly Random _rnd = new Random();
+
+
 
 
         public NastyaVk(String vkToken)
@@ -34,7 +32,7 @@ namespace Nastya.Nastya.vk
         public async Task<Message[]> GetNewMessages()
         {
             var vkMessages = (await _api.Messages.Get()).Items.Where(a => a.ReadState == MessageReadState.Unread);
-            Thread.Sleep(vApiDelay);
+            Thread.Sleep(ApiDelay);
             await SetReadState(vkMessages);
             var nastyaMessages = vkMessages.Select(a => Message.GetMessageFromVk(a, this)).ToArray();
             return nastyaMessages;
@@ -45,7 +43,7 @@ namespace Nastya.Nastya.vk
             foreach (var message in messages)
             {
                 await _api.Messages.MarkAsRead(message.UserId, message.Id);
-                Thread.Sleep(vApiDelay);
+                Thread.Sleep(ApiDelay);
             }
             return true;
         }
@@ -62,5 +60,7 @@ namespace Nastya.Nastya.vk
             }
 
         }
+
+
     }
 }
