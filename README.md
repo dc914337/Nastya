@@ -1,1 +1,2 @@
 # Nastya
+Bot for kicking
