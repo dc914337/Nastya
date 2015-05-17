@@ -1,0 +1,14 @@
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\Nastya.exe.config
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\Nastya.exe
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\Nastya.pdb
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\kasthack.VKSharp.dll
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\obj\Debug\Nastya.csproj.App.config
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\obj\Debug\Nastya.csprojResolveAssemblyReference.cache
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\obj\Debug\Nastya.exe
+C:\Users\Smirnyaga\GoogleDrive\code\C#\Nastya\Nastya\obj\Debug\Nastya.pdb
