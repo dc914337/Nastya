@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Nastya.Nastya.messenger.userId;
+using Nastya.Nastya.Messenger.UserId;
 
-namespace Nastya.Nastya.messenger
+namespace Nastya.Nastya.Messenger
 {
     public interface IMessenger
     {

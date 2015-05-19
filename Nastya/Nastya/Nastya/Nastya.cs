@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Nastya.Nastya.config;
-using Nastya.Nastya.executor;
-using Nastya.Nastya.executor.context;
-using Nastya.Nastya.logger;
-using Nastya.Nastya.messenger.vk;
+using Nastya.Nastya.Configs;
+using Nastya.Nastya.Log;
+using Nastya.Nastya.Messenger.Vk;
+using Nastya.Nastya.Executors;
 
 namespace Nastya.Nastya
 {
@@ -31,6 +28,7 @@ namespace Nastya.Nastya
             _config = Config.GetFromFile(configPath);
             _executor = new Executor(_config);
             Vk = new NastyaVk(_config.VkToken);
+
         }
 
 

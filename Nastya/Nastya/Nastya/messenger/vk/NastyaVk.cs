@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Nastya.Nastya.logger;
-using Nastya.Nastya.messenger.userId;
+using Nastya.Nastya.Log;
+using Nastya.Nastya.Messenger.UserId;
 using VKSharp;
 using VKSharp.Core.Enums;
 using VKSharp.Data.Api;
-using MessageType = Nastya.Nastya.logger.MessageType;
+using MessageType = Nastya.Nastya.Log.MessageType;
 
-namespace Nastya.Nastya.messenger.vk
+namespace Nastya.Nastya.Messenger.Vk
 {
     public class NastyaVk : IMessenger
     {

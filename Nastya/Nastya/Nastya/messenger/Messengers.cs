@@ -1,4 +1,4 @@
-namespace Nastya.Nastya.messenger
+namespace Nastya.Nastya.Messenger
 {
     public enum Messengers
     {

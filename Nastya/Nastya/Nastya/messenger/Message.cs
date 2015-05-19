@@ -1,7 +1,7 @@
 ﻿using System;
-using Nastya.Nastya.messenger.userId;
+using Nastya.Nastya.Messenger.UserId;
 
-namespace Nastya.Nastya.messenger
+namespace Nastya.Nastya.Messenger
 {
     public class Message
     {
