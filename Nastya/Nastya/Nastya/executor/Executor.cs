@@ -13,6 +13,7 @@ namespace Nastya.Nastya.executor
 
         public Executor(Config config, NastyaContextManager contextManager)
         {
+            //sup
             _contextManager = contextManager;
             _cfg = config;
             foreach (var command in config.Commands)
