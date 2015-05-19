@@ -18,6 +18,7 @@ namespace Nastya.Nastya.messenger.vk
         private readonly VKApi _api;
         private readonly Random _rnd = new Random();
 
+        //private static Stack<IMessageListener> 
 
 
 

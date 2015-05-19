@@ -36,7 +36,7 @@ namespace Nastya
             //foreachThread.Start();
 
             //Console.WriteLine(CreateSampleConfig());
-            Console.ReadKey();
+            //Console.ReadKey();
             Logger.AddTypeToOutput(MessageType.Debug);
             Logger.AddTypeToOutput(MessageType.Error);
             Logger.AddTypeToOutput(MessageType.Verbose);
@@ -76,6 +76,7 @@ namespace Nastya
         }
 
 
+      
 
 
         static String CreateSampleConfig()
