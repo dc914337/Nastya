@@ -29,7 +29,7 @@ namespace Nastya.Nastya
         {
             //init
             _config = Config.GetFromFile(configPath);
-            _executor = new Executor(_config, new NastyaContextManager(this));
+            _executor = new Executor(_config);
             Vk = new NastyaVk(_config.VkToken);
         }
 

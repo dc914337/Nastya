@@ -9,17 +9,11 @@ namespace Nastya.Nastya.executor
     class Executor
     {
         private NastyaCommand[] nastyaCommands;
-        private NastyaContextManager _contextManager;
 
-        public Executor(Config config, NastyaContextManager contextManager)
+        public Executor(Config config)
         {
             //master commit
-            _contextManager = contextManager;
             nastyaCommands = config.Commands;
-            foreach (var command in config.Commands)
-            {
-                command.SetContext(contextManager);
-            }
         }
 
         public void ProcessMessage(Message message)

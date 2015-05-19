@@ -10,12 +10,16 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands
 {
     public abstract class WordSequenceCommand : NastyaCommand
     {
-        public List<WordSequence> Sequences { get; set; }//sort sequences
+        public List<WordSequence> Sequences { get; set; } //sort sequences
 
         protected WordSequenceCommand()
         {
             Sequences = new List<WordSequence>();
         }
+
+        protected CommonContextContainer<DefaultCommandContext> CommonContextContainer = new CommonContextContainer<DefaultCommandContext>();
+
+        private DefaultCommandContext Context => CommonContextContainer.GetContext();
 
         public override CheckResult CheckCommandFits(Message command)
         {
@@ -43,7 +47,7 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands
         }
 
 
-        private String GetCleanText(String text)
+        private static String GetCleanText(String text)
         {
             return CollectStringFromArray(text.Trim().Where(a => !Char.IsSymbol(a)));
         }
@@ -58,7 +62,7 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands
             return sb.ToString();
         }
 
-        private string[] GetCleanWords(String str)
+        private static string[] GetCleanWords(String str)
         {
             var removedSymbols = GetCleanText(str);
             var words = removedSymbols.Split(' ').Where(a => !String.IsNullOrWhiteSpace(a)).Select(a => a.Trim()).ToArray();
@@ -67,7 +71,7 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands
 
         protected String GetRandomStringFromList(string[] responses)
         {
-            int num = ((DefaultCommandContext)_context).Rnd.Next(0, responses.Length);
+            var num = Context.Rnd.Next(0, responses.Length);
             return responses[num];
         }
 

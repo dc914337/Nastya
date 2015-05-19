@@ -10,12 +10,13 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands
     {
         public string[] Responses { get; set; }
 
+        private CommonContextContainer<DefaultCommandContext> _contextContainer = new CommonContextContainer<DefaultCommandContext>();
+
         public ChitChatCommand()
         {
             //for xml serializer
         }
-
-
+        
         public override async Task<bool> Execute(Message command)
         {
             return await Respond(command.Source, command.From);
@@ -28,7 +29,7 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands
 
         private async Task<bool> Respond(IMessenger messenger, IUserId userId)
         {
-            String response = Responses[_context.Rnd.Next(0, Responses.Length)];
+            String response = Responses[_contextContainer.GetContext().Rnd.Next(0, Responses.Length)];
             await messenger.SendMessage(response, userId);
             return true;
         }

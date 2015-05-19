@@ -66,7 +66,6 @@
     <Compile Include="Nastya\executor\commands\wordSequenceCommands\dayCommands\ByeCommand.cs" />
     <Compile Include="Nastya\executor\commands\wordSequenceCommands\ChitChatCommand.cs" />
     <Compile Include="Nastya\executor\commands\wordSequenceCommands\dayCommands\DayCommand.cs" />
-    <Compile Include="Nastya\executor\commands\wordSequenceCommands\dayCommands\Kicker.cs" />
     <Compile Include="Nastya\executor\commands\wordSequenceCommands\wordseqence\comparer\WordsComparer.cs" />
     <Compile Include="Nastya\executor\commands\wordSequenceCommands\HelpCommand.cs" />
     <Compile Include="Nastya\executor\commands\wordSequenceCommands\dayCommands\HelloCommand.cs" />
@@ -76,10 +75,11 @@
     <Compile Include="Nastya\executor\commands\wordSequenceCommands\wordseqence\SequenceType.cs" />
     <Compile Include="Nastya\executor\commands\wordSequenceCommands\WordSequenceCommand.cs" />
     <Compile Include="Nastya\executor\CommandType.cs" />
+    <Compile Include="Nastya\executor\context\CommonContextContainer.cs" />
+    <Compile Include="Nastya\executor\context\ContextContainer.cs" />
     <Compile Include="Nastya\executor\context\DayContext.cs" />
     <Compile Include="Nastya\executor\context\DefaultCommandContext.cs" />
-    <Compile Include="Nastya\executor\context\NastyaContextManager.cs" />
-    <Compile Include="Nastya\executor\context\dayContext\UserContext.cs" />
+    <Compile Include="Nastya\executor\context\UserContexts.cs" />
     <Compile Include="Nastya\executor\INastyaCommand.cs" />
     <Compile Include="Nastya\executor\Executor.cs" />
     <Compile Include="Nastya\config\Config.cs" />

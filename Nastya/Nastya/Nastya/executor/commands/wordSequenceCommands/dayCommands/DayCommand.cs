@@ -14,28 +14,13 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands.dayCommands
     {
         public string[] Responses { get; set; }
 
+        
+        private UserContextsContainer<DayContext> _contextContainer = new UserContextsContainer<DayContext>();
 
-        public override void SetContext(NastyaContextManager contextManager)
+        protected DayContext GetContext(IUserId userId)
         {
-            _contextManager = contextManager;
-            _context = contextManager.GetOrCreateContext(ContextId, new DayContext());
+            return _contextContainer.GetOrCreateContext(userId);
         }
-
-        protected DayContext GetDayContext()
-        {
-            return (DayContext)_context;
-        }
-
-        protected static void KickingThread(NastyaContextManager contextManager, IUserId from)
-        {
-            Kicker kicker = new Kicker(contextManager, from);
-            kicker.Start();
-        }
-
-        protected UserContext GetOrCreateUserContext(IUserId from)
-        {
-            return GetDayContext().GetOrCreateUserContext(from, new Thread(() => KickingThread(_contextManager, from)));
-        }
-
+        
     }
 }

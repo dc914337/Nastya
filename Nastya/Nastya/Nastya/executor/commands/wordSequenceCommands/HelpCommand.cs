@@ -10,13 +10,10 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands
     {
         public String HelpString { get; set; }
         
-
         public HelpCommand()
         {
             //for xml serializer
         }
-
-
 
         public override async Task<bool> Execute(Message command)
         {

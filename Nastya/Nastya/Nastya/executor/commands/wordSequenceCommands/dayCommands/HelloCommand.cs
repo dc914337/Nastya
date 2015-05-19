@@ -2,14 +2,17 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Nastya.Nastya.executor.context;
+using Nastya.Nastya.logger;
 using Nastya.Nastya.messenger;
+using Nastya.Nastya.messenger.userId;
 
 namespace Nastya.Nastya.executor.commands.wordSequenceCommands.dayCommands
 {
     public class HelloCommand : DayCommand, IRandomResponder
     {
         public string[] AlreadyGreetedResponses { get; set; }
-        
+
+
 
         public HelloCommand()
         {
@@ -18,21 +21,22 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands.dayCommands
 
         public async override Task<bool> Execute(Message command)
         {
-            var userContext = GetOrCreateUserContext(command.From);
+            var userId = command.From;
+
+            var userContext = GetContext(userId);
 
             String response = GetRandomStringFromList(
-                userContext.Greeted ?
+               userContext.Greeted ?
                  AlreadyGreetedResponses :
                  Responses);
             try
             {
                 userContext.Greeted = true;
-                await command.Source.SendMessage(response, command.From);
+                await command.Source.SendMessage(response, userId);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-
+                Logger.Out("HelloCommand: error sending message to {0}", MessageType.Error, userId);
             }
 
             return true;

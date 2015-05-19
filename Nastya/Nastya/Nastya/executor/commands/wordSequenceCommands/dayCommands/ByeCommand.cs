@@ -16,7 +16,7 @@ namespace Nastya.Nastya.executor.commands.wordSequenceCommands.dayCommands
 
         public override async Task<bool> Execute(Message command)
         {
-            var userContext = GetOrCreateUserContext(command.From);
+            var userContext = GetContext(command.From);
 
             String response = GetRandomStringFromList(Responses);
 

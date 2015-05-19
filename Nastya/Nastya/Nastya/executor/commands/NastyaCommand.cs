@@ -18,25 +18,15 @@ namespace Nastya.Nastya.executor.commands
     {
         public NastyaCommand()
         {
-
+            //for xml serializer
         }
 
-        protected DefaultCommandContext _context;
-        protected NastyaContextManager _contextManager;
-
-        public string ContextId { get; set; }
         public int Priority { get; set; }
         public string CommandId { get; set; }
         public CommandType Type { get; set; }
 
         public abstract Task<bool> Execute(Message command);
         public abstract CheckResult CheckCommandFits(Message command);
-
-        public virtual void SetContext(NastyaContextManager contextManager)
-        {
-            _contextManager = contextManager;
-            _context = contextManager.GetOrCreateContext(ContextId, new DefaultCommandContext());
-        }
-
+        
     }
 }
