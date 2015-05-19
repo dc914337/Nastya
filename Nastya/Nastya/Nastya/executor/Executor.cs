@@ -8,14 +8,14 @@ namespace Nastya.Nastya.executor
 {
     class Executor
     {
-        private Config _cfg;
+        private NastyaCommand[] nastyaCommands;
         private NastyaContextManager _contextManager;
 
         public Executor(Config config, NastyaContextManager contextManager)
         {
             //master commit
             _contextManager = contextManager;
-            _cfg = config;
+            nastyaCommands = config.Commands;
             foreach (var command in config.Commands)
             {
                 command.SetContext(contextManager);
@@ -32,7 +32,7 @@ namespace Nastya.Nastya.executor
         {
             NastyaCommand priorCommand = null;
             int maxRate = -1;
-            foreach (var nastyaCommand in _cfg.Commands)
+            foreach (var nastyaCommand in nastyaCommands)
             {
                 var checkResult = nastyaCommand.CheckCommandFits(message);
                 if (checkResult == null || checkResult.Type != CheckResults.Success) continue;
