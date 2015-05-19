@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence;
-using Nastya.Nastya.Executors.ContextContainer;
-using Nastya.Nastya.Executors.ContextContainer.Context;
+using Nastya.Nastya.Executors.ContextContainers;
+using Nastya.Nastya.Executors.ContextContainers.Context;
 using Nastya.Nastya.Messenger;
 
 namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
@@ -18,6 +18,18 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
             Sequences = new List<WordSequence>();
         }
 
+        public override ContextContainer ContextContainer
+        {
+            get
+            {
+                return CommonContextContainer;
+            }
+            set
+            {
+                CommonContextContainer = (CommonContextContainer<DefaultCommandContext>)value;
+            }
+        }
+
         protected CommonContextContainer<DefaultCommandContext> CommonContextContainer = new CommonContextContainer<DefaultCommandContext>();
 
         private DefaultCommandContext Context => CommonContextContainer.GetContext();
@@ -27,8 +39,8 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
             var words = GetCleanWords(command.MessageBody);
             var longestFittingSeq = GetLongestFittingSequence(words);
             if (longestFittingSeq == null)
-                return new CheckResult(CheckResults.Fail);
-            var result = new CheckResult(CheckResults.Success, longestFittingSeq.Sequence.Length);
+                return new CheckResult(CheckResultTypes.Fail);
+            var result = new CheckResult(CheckResultTypes.Success, longestFittingSeq.Sequence.Length);
             return result;
         }
 

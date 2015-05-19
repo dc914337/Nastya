@@ -1,6 +1,6 @@
 ﻿namespace Nastya.Nastya.Executors
 {
-    public enum CheckResults
+    public enum CheckResultTypes
     {
         Success,
         Fail,

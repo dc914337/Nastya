@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Nastya.Nastya.Configs;
 using Nastya.Nastya.Executors.Commands;
 using Nastya.Nastya.Log;
@@ -15,6 +16,7 @@ namespace Nastya.Nastya.Executors
         {
             //master commit
             nastyaCommands = config.Commands;
+            Console.WriteLine(  );
         }
 
         public void ProcessMessage(Message message)
@@ -30,7 +32,7 @@ namespace Nastya.Nastya.Executors
             foreach (var nastyaCommand in nastyaCommands)
             {
                 var checkResult = nastyaCommand.CheckCommandFits(message);
-                if (checkResult == null || checkResult.Type != CheckResults.Success) continue;
+                if (checkResult == null || checkResult.Type != CheckResultTypes.Success) continue;
 
                 if (priorCommand == null ||
                     priorCommand.Priority < nastyaCommand.Priority ||

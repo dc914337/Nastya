@@ -1,7 +1,6 @@
-﻿
-using Nastya.Nastya.Executors.ContextContainer.Context;
+﻿using Nastya.Nastya.Executors.ContextContainers.Context;
 
-namespace Nastya.Nastya.Executors.ContextContainer
+namespace Nastya.Nastya.Executors.ContextContainers
 {
     public class CommonContextContainer<T> : ContextContainer where T : DefaultCommandContext, new()       //new MUST come last
     {

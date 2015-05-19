@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nastya.Nastya.Executors.ContextContainers;
 using Nastya.Nastya.Messenger;
 
 namespace Nastya.Nastya.Executors
@@ -12,7 +13,9 @@ namespace Nastya.Nastya.Executors
         int Priority { get; }
         String CommandId { get; }
         CommandType Type { get; }
+        ContextContainer ContextContainer { get; }
         Task<bool> Execute(Message command);
         CheckResult CheckCommandFits(Message command);
+
     }
 }

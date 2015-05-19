@@ -1,6 +1,6 @@
 ﻿
 
-namespace Nastya.Nastya.Executors.ContextContainer.Context
+namespace Nastya.Nastya.Executors.ContextContainers.Context
 {
     public class DayContext : DefaultCommandContext
     {

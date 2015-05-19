@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Nastya.Nastya.Executors.ContextContainer;
-using Nastya.Nastya.Executors.ContextContainer.Context;
+using Nastya.Nastya.Executors.ContextContainers;
+using Nastya.Nastya.Executors.ContextContainers.Context;
 using Nastya.Nastya.Messenger;
 using Nastya.Nastya.Messenger.UserId;
 
@@ -17,7 +17,21 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
         {
             //for xml serializer
         }
-        
+
+        public override ContextContainer ContextContainer
+        {
+            get
+            {
+                return _contextContainer;
+            }
+
+            set
+            {
+                _contextContainer = (CommonContextContainer<DefaultCommandContext>)value;
+            }
+        }
+
+
         public override async Task<bool> Execute(Message command)
         {
             return await Respond(command.Source, command.From);
@@ -25,7 +39,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 
         public override CheckResult CheckCommandFits(Message command)
         {
-            return new CheckResult(CheckResults.Success);
+            return new CheckResult(CheckResultTypes.Success);
         }
 
         private async Task<bool> Respond(IMessenger messenger, IUserId userId)

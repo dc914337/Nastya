@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using Nastya.Nastya.Executors;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands;
+using Nastya.Nastya.Executors.ContextContainers;
 using Nastya.Nastya.Messenger;
 
 namespace Nastya.Nastya.Executors.Commands
@@ -24,6 +25,7 @@ namespace Nastya.Nastya.Executors.Commands
         public int Priority { get; set; }
         public string CommandId { get; set; }
         public CommandType Type { get; set; }
+        public abstract ContextContainer ContextContainer { get; set; }
 
         public abstract Task<bool> Execute(Message command);
         public abstract CheckResult CheckCommandFits(Message command);

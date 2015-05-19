@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Nastya.Nastya.Executors.ContextContainer.Context;
+using Nastya.Nastya.Executors.ContextContainers.Context;
 using Nastya.Nastya.Messenger.UserId;
 
-namespace Nastya.Nastya.Executors.ContextContainer.Context
+namespace Nastya.Nastya.Executors.ContextContainers
 {
     class UserContextsContainer<T> : ContextContainer where T : DefaultCommandContext, new()         //new MUST come last
     {
