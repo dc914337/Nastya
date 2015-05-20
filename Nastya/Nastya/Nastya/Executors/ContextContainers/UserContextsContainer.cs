@@ -4,7 +4,7 @@ using Nastya.Nastya.Messenger.UserId;
 
 namespace Nastya.Nastya.Executors.ContextContainers
 {
-    class UserContextsContainer<T> : ContextContainer where T : DefaultCommandContext, new()         //new MUST come last
+    public class UserContextsContainer<T> : ContextContainer where T : DefaultCommandContext, new()         //new MUST come last
     {
         private Dictionary<IUserId, T> _contexts = new Dictionary<IUserId, T>();
 

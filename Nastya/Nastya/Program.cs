@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Contexts;
 using Nastya.Nastya.Configs;
 using Nastya.Nastya.Configs.Mapper;
 using Nastya.Nastya.Executors;
@@ -19,6 +20,7 @@ namespace Nastya
     {
         static void Main(string[] args)
         {
+
             //Console.WriteLine(CreateSampleConfig());
 
             //Thread addThread = new Thread(() => AddToStackThread(stack));
@@ -82,7 +84,7 @@ namespace Nastya
             help.HelpString = "somehelpstring";
             help.Priority = 1;
             help.Type = CommandType.Info;
-            help.ContextContainer.ContextId = "31337";
+
 
             help.Sequences = new List<WordSequence>()
                     {
