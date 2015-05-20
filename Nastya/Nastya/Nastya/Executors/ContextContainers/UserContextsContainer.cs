@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Nastya.Nastya.Executors.ContextContainers.Context;
+using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Messenger.UserId;
 
 namespace Nastya.Nastya.Executors.ContextContainers
 {
-    public class UserContextsContainer<T> : ContextContainer where T : DefaultCommandContext, new()         //new MUST come last
+    public class UserContextsContainer<T> : ContextContainer where T : BaseContext, new()         //new MUST come last
     {
         private Dictionary<IUserId, T> _contexts = new Dictionary<IUserId, T>();
 

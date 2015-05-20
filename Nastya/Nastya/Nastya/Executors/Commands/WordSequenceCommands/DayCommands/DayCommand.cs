@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands;
 using Nastya.Nastya.Executors.ContextContainers;
-using Nastya.Nastya.Executors.ContextContainers.Context;
+using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Executors.ContextManagement;
 using Nastya.Nastya.Messenger;
 using Nastya.Nastya.Messenger.UserId;

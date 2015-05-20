@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence;
 using Nastya.Nastya.Executors.ContextContainers;
-using Nastya.Nastya.Executors.ContextContainers.Context;
+using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Executors.ContextManagement;
 using Nastya.Nastya.Messenger;
 
@@ -69,7 +69,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 
         protected String GetRandomStringFromList(string[] responses)
         {
-            var num = ContextManager.GetOrCreateContext<DefaultCommandContext>(Contexts.GlobalContext).Rnd.Next(0, responses.Length);
+            var num = ContextManager.GetOrCreateContext<RandomContext>(Contexts.GlobalContext).Rnd.Next(0, responses.Length);
             return responses[num];
         }
 

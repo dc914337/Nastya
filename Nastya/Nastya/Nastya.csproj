@@ -77,9 +77,10 @@
     <Compile Include="Nastya\Executors\CommandType.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\CommonContextContainer.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\ContextContainer.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\BaseContext.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\DayContext.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\RandomContext.cs" />
     <Compile Include="Nastya\Executors\ContextManagement\ContextManager.cs" />
-    <Compile Include="Nastya\Executors\ContextContainers\Context\DayContext.cs" />
-    <Compile Include="Nastya\Executors\ContextContainers\Context\DefaultCommandContext.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\UserContextsContainer.cs" />
     <Compile Include="Nastya\Executors\ContextManagement\Contexts.cs" />
     <Compile Include="Nastya\Executors\INastyaCommand.cs" />

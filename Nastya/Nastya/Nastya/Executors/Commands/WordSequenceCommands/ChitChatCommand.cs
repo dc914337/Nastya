@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Nastya.Nastya.Executors.ContextContainers;
-using Nastya.Nastya.Executors.ContextContainers.Context;
+using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Messenger;
 using Nastya.Nastya.Messenger.UserId;
 
@@ -11,7 +11,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
     {
         public string[] Responses { get; set; }
 
-        private CommonContextContainer<DefaultCommandContext> _contextContainer = new CommonContextContainer<DefaultCommandContext>();
+        private CommonContextContainer<RandomContext> _contextContainer = new CommonContextContainer<RandomContext>();
 
         public ChitChatCommand()
         {

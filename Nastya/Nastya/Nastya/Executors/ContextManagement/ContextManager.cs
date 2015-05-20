@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Nastya.Nastya.Executors.ContextContainers;
-using Nastya.Nastya.Executors.ContextContainers.Context;
+using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Messenger.UserId;
 
 namespace Nastya.Nastya.Executors.ContextManagement
@@ -11,7 +11,7 @@ namespace Nastya.Nastya.Executors.ContextManagement
 
         public T GetOrCreateContext<T>(Contexts key)
 
-            where T : DefaultCommandContext, new()
+            where T : BaseContext, new()
         {
             if (_allContexts.ContainsKey(key))
                 return ((CommonContextContainer<T>)_allContexts[key]).GetContext();
@@ -21,7 +21,7 @@ namespace Nastya.Nastya.Executors.ContextManagement
         }
 
         public T GetOrCreateUsersContext<T>(Contexts key, IUserId userId)
-            where T : DefaultCommandContext, new()
+            where T : BaseContext, new()
         {
             if (_allContexts.ContainsKey(key))
                 return ((UserContextsContainer<T>)_allContexts[key]).GetOrCreateContext(userId);
