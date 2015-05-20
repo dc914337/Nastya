@@ -60,10 +60,11 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
             return sb.ToString();
         }
 
+        private static char[] delimiters = new char[] { '\r', '\n', ' ' };
         private static string[] GetCleanWords(String str)
         {
             var removedSymbols = GetCleanText(str);
-            var words = removedSymbols.Split(' ').Where(a => !String.IsNullOrWhiteSpace(a)).Select(a => a.Trim()).ToArray();
+            var words = removedSymbols.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).Where(a => !String.IsNullOrWhiteSpace(a)).Select(a => a.Trim()).ToArray();
             return words;
         }
 
