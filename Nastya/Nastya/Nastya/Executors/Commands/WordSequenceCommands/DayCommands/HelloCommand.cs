@@ -21,7 +21,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
         {
             var userId = command.From;
 
-            var userContext = GetContext(userId);
+            var userContext = GetDayContext(userId);
 
             String response = GetRandomStringFromList(
                userContext.Greeted ?

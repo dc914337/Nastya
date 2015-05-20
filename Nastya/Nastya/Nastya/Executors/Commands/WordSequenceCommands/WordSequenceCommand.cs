@@ -5,6 +5,7 @@ using System.Text;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence;
 using Nastya.Nastya.Executors.ContextContainers;
 using Nastya.Nastya.Executors.ContextContainers.Context;
+using Nastya.Nastya.Executors.ContextManagement;
 using Nastya.Nastya.Messenger;
 
 namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
@@ -17,22 +18,6 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
         {
             Sequences = new List<WordSequence>();
         }
-
-        public override ContextContainer ContextContainer
-        {
-            get
-            {
-                return CommonContextContainer;
-            }
-            set
-            {
-                CommonContextContainer = (CommonContextContainer<DefaultCommandContext>)value;
-            }
-        }
-
-        protected CommonContextContainer<DefaultCommandContext> CommonContextContainer = new CommonContextContainer<DefaultCommandContext>();
-
-        private DefaultCommandContext Context => CommonContextContainer.GetContext();
 
         public override CheckResult CheckCommandFits(Message command)
         {
@@ -84,7 +69,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 
         protected String GetRandomStringFromList(string[] responses)
         {
-            var num = Context.Rnd.Next(0, responses.Length);
+            var num = ContextManager.GetOrCreateContext<DefaultCommandContext>(Contexts.GlobalContext).Rnd.Next(0, responses.Length);
             return responses[num];
         }
 

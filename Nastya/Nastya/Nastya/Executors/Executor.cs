@@ -2,6 +2,7 @@
 using System;
 using Nastya.Nastya.Configs;
 using Nastya.Nastya.Executors.Commands;
+using Nastya.Nastya.Executors.ContextManagement;
 using Nastya.Nastya.Log;
 using Nastya.Nastya.Messenger;
 
@@ -15,8 +16,12 @@ namespace Nastya.Nastya.Executors
         public Executor(Config config)
         {
             //master commit
+            ContextManager contextManager = new ContextManager();
             nastyaCommands = config.Commands;
-            Console.WriteLine(  );
+            foreach (var command in nastyaCommands)
+            {
+                command.ContextManager = contextManager;
+            }
         }
 
         public void ProcessMessage(Message message)

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands;
 using Nastya.Nastya.Executors.ContextContainers;
 using Nastya.Nastya.Executors.ContextContainers.Context;
+using Nastya.Nastya.Executors.ContextManagement;
 using Nastya.Nastya.Messenger;
 using Nastya.Nastya.Messenger.UserId;
 
@@ -16,24 +17,11 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
     {
         public string[] Responses { get; set; }
 
-        public override ContextContainer ContextContainer
+        protected DayContext GetDayContext(IUserId userId)
         {
-            get
-            {
-                return _contextContainer;
-            }
 
-            set
-            {
-                _contextContainer = (UserContextsContainer<DayContext>)value;
-            }
-        }
+            return ContextManager.GetOrCreateUsersContext<DayContext>(Contexts.DayContext, userId);
 
-        private UserContextsContainer<DayContext> _contextContainer = new UserContextsContainer<DayContext>();
-
-        protected DayContext GetContext(IUserId userId)
-        {
-            return _contextContainer.GetOrCreateContext(userId);
         }
 
     }

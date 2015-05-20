@@ -13,9 +13,7 @@ namespace Nastya.Nastya.Executors
         int Priority { get; }
         String CommandId { get; }
         CommandType Type { get; }
-        ContextContainer ContextContainer { get; }
         Task<bool> Execute(Message command);
         CheckResult CheckCommandFits(Message command);
-
     }
 }

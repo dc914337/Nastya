@@ -9,22 +9,23 @@ namespace Nastya.Nastya.Executors.ContextManagement
     {
         private Dictionary<Contexts, ContextContainer> _allContexts = new Dictionary<Contexts, ContextContainer>();
 
-        public T GetOrCreateContext<T>(Contexts key) where T : ContextContainer, new()
+        public T GetOrCreateContext<T>(Contexts key)
+
+            where T : DefaultCommandContext, new()
         {
             if (_allContexts.ContainsKey(key))
-                return (T)_allContexts[key];
-            var newContext = new T();
+                return ((CommonContextContainer<T>)_allContexts[key]).GetContext();
+            var newContext = new CommonContextContainer<T>();
             _allContexts.Add(key, newContext);
-            return newContext;
+            return newContext.GetContext();
         }
 
-        public V GetOrCreateUsersContext<T, V>(Contexts key, IUserId userId)
-            where T : UserContextsContainer<V>, new()
-            where V : DefaultCommandContext, new()
+        public T GetOrCreateUsersContext<T>(Contexts key, IUserId userId)
+            where T : DefaultCommandContext, new()
         {
             if (_allContexts.ContainsKey(key))
-                return ((T)_allContexts[key]).GetOrCreateContext(userId);
-            var newContext = new T();
+                return ((UserContextsContainer<T>)_allContexts[key]).GetOrCreateContext(userId);
+            var newContext = new UserContextsContainer<T>();
             _allContexts.Add(key, newContext);
             return newContext.GetOrCreateContext(userId);
         }

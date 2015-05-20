@@ -17,20 +17,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
         {
             //for xml serializer
         }
-
-        public override ContextContainer ContextContainer
-        {
-            get
-            {
-                return _contextContainer;
-            }
-
-            set
-            {
-                _contextContainer = (CommonContextContainer<DefaultCommandContext>)value;
-            }
-        }
-
+        
 
         public override async Task<bool> Execute(Message command)
         {
