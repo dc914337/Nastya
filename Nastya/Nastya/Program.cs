@@ -75,7 +75,7 @@ namespace Nastya
         {
             var cfg = new Config
             {
-                VkToken = "1c90280145a6a26a4bf544f525d324a10de5ff688867238cc5f413a2f0a3dfb951e0d0a12b206bbef7c98"
+                VkToken = "vkToken"
             };
 
             var comparer = new WordsComparer(0.525);
