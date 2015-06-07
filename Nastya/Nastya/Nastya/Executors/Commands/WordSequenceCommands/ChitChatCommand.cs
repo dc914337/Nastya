@@ -4,6 +4,7 @@ using Nastya.Nastya.Executors.ContextContainers;
 using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Messenger;
 using Nastya.Nastya.Messenger.UserId;
+using Nastya.Utils.Datatypes;
 
 namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 {
@@ -17,7 +18,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
         {
             //for xml serializer
         }
-        
+
 
         public override async Task<bool> Execute(Message command)
         {
@@ -26,7 +27,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 
         public override CheckResult CheckCommandFits(Message command)
         {
-            return new CheckResult(Fits.Perfectly);
+            return new CheckResult(Fits.Probably, new Percents(0));
         }
 
         private async Task<bool> Respond(IMessenger messenger, IUserId userId)

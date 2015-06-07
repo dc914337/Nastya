@@ -7,11 +7,14 @@ using Nastya.Nastya.Executors.ContextContainers;
 using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Executors.ContextManagement;
 using Nastya.Nastya.Messenger;
+using Nastya.Utils.Datatypes;
 
 namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 {
     public abstract class WordSequenceCommand : NastyaCommand
     {
+        private static int longestPossibleWordsSequance = 100;
+
         public List<WordSequence> Sequences { get; set; } //sort sequences
 
         protected WordSequenceCommand()
@@ -25,7 +28,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
             var longestFittingSeq = GetLongestFittingSequence(words);
             if (longestFittingSeq == null)
                 return new CheckResult(Fits.DoesNot);
-            var result = new CheckResult(Fits.Perfectly, longestFittingSeq.Sequence.Length);
+            var result = new CheckResult(Fits.Probably, Percents.CountPercents(0, longestPossibleWordsSequance, longestFittingSeq.Sequence.Length));
             return result;
         }
 

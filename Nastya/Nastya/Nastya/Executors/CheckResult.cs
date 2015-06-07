@@ -10,9 +10,9 @@ namespace Nastya.Nastya.Executors
 {
     public class CheckResult
     {
-        public CheckResult(Fits fits, int percentsFits)
+        public CheckResult(Fits fits, Percents percentsFits)
         {
-            PercentsFits = new Percents(percentsFits);
+            PercentsFits = percentsFits;
             Fits = fits;
         }
 
