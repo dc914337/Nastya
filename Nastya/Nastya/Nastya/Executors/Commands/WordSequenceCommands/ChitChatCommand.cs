@@ -26,7 +26,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 
         public override CheckResult CheckCommandFits(Message command)
         {
-            return new CheckResult(CheckResultTypes.Success);
+            return new CheckResult(Fits.Perfectly);
         }
 
         private async Task<bool> Respond(IMessenger messenger, IUserId userId)

@@ -37,14 +37,14 @@ namespace Nastya.Nastya.Executors
             foreach (var nastyaCommand in nastyaCommands)
             {
                 var checkResult = nastyaCommand.CheckCommandFits(message);
-                if (checkResult == null || checkResult.Type != CheckResultTypes.Success) continue;
+                if (checkResult == null || checkResult.Fits != Fits.Perfectly) continue;
 
                 if (priorCommand == null ||
                     priorCommand.Priority < nastyaCommand.Priority ||
-                    (priorCommand.Priority == nastyaCommand.Priority && (int)checkResult.Rate > maxRate))
+                    (priorCommand.Priority == nastyaCommand.Priority && (int)checkResult.PercentsFits > maxRate))
                 {
                     priorCommand = nastyaCommand;
-                    maxRate = checkResult.Rate;
+                    maxRate = checkResult.PercentsFits;
                 }
             }
 

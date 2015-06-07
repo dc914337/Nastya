@@ -24,8 +24,8 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
             var words = GetCleanWords(command.MessageBody);
             var longestFittingSeq = GetLongestFittingSequence(words);
             if (longestFittingSeq == null)
-                return new CheckResult(CheckResultTypes.Fail);
-            var result = new CheckResult(CheckResultTypes.Success, longestFittingSeq.Sequence.Length);
+                return new CheckResult(Fits.DoesNot);
+            var result = new CheckResult(Fits.Perfectly, longestFittingSeq.Sequence.Length);
             return result;
         }
 

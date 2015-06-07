@@ -9,20 +9,20 @@ namespace Nastya.Nastya.Executors
 {
     public class CheckResult
     {
-        public CheckResult(CheckResultTypes type, int rate)
+        public CheckResult(Fits fits, int percentsFits)
         {
-            Rate = rate;
-            Type = type;
+            PercentsFits = percentsFits;
+            Fits = fits;
         }
 
-        public CheckResult(CheckResultTypes type)
+        public CheckResult(Fits fits)
         {
-            Type = type;
-            Rate = 0;
+            Fits = fits;
+            PercentsFits = 0;
         }
 
-        public int Rate { get; }
-        public CheckResultTypes Type { get; }
+        public int PercentsFits { get; }
+        public Fits Fits { get; }
 
     }
 }
