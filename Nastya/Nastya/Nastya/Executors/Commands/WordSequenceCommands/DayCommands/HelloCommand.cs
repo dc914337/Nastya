@@ -34,7 +34,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
             }
             catch (Exception ex)
             {
-                Logger.Out("HelloCommand: error sending message to {0}", MessageType.Error, userId);
+                Logger.Out("HelloCommand: error sending message to {0}. Message: {1}", MessageType.Error, userId, ex.Message);
             }
 
             return true;

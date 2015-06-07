@@ -16,7 +16,7 @@ namespace Nastya.Nastya.Executors.Commands
     [XmlInclude(typeof(ChitChatCommand))]
     [XmlInclude(typeof(HelloCommand))]
     [XmlInclude(typeof(ByeCommand))]
-    public abstract class NastyaCommand : INastyaCommand
+    public abstract class NastyaCommand : INastyaCommand, IComparable<NastyaCommand>
     {
         public NastyaCommand()
         {
@@ -32,5 +32,9 @@ namespace Nastya.Nastya.Executors.Commands
 
         public ContextManager ContextManager { get; set; }
 
+        public int CompareTo(NastyaCommand other)
+        {
+            return Priority.CompareTo(other.Priority);
+        }
     }
 }

@@ -51,6 +51,27 @@ namespace Nastya.Utils.Datatypes
             return new Percents(res);
         }
 
+        public static bool operator >(Percents c1, Percents c2)
+        {
+            return c1._percents > c2._percents;
+        }
+
+        public static bool operator <(Percents c1, Percents c2)
+        {
+            return c1._percents < c2._percents;
+        }
+
+        public static bool operator <=(Percents c1, Percents c2)
+        {
+            return c1._percents <= c2._percents;
+        }
+
+        public static bool operator >=(Percents c1, Percents c2)
+        {
+            return c1._percents >= c2._percents;
+        }
+
+
 
         private static bool CheckBounds(double num)
         {

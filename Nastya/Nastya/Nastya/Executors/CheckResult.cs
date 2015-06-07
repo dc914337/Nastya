@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nastya.Nastya.Executors;
+using Nastya.Utils.Datatypes;
 
 namespace Nastya.Nastya.Executors
 {
@@ -11,17 +12,17 @@ namespace Nastya.Nastya.Executors
     {
         public CheckResult(Fits fits, int percentsFits)
         {
-            PercentsFits = percentsFits;
+            PercentsFits = new Percents(percentsFits);
             Fits = fits;
         }
 
         public CheckResult(Fits fits)
         {
             Fits = fits;
-            PercentsFits = 0;
+            PercentsFits = new Percents(0);
         }
 
-        public int PercentsFits { get; }
+        public Percents PercentsFits { get; }
         public Fits Fits { get; }
 
     }
