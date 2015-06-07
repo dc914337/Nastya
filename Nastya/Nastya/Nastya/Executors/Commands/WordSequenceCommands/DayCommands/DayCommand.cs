@@ -20,7 +20,6 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
         protected DayContext GetDayContext(IUserId userId)
         {
             return ContextManager.GetOrCreateUsersContext<DayContext>(Contexts.DayContext, userId);
-        
         }
 
     }

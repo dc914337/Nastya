@@ -16,7 +16,7 @@ using Nastya.Nastya.Messenger.UserId;
 
 namespace Nastya
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
@@ -73,23 +73,33 @@ namespace Nastya
 
         static String CreateSampleConfig()
         {
-            Config cfg = new Config();
-            cfg.VkToken = "1c90280145a6a26a4bf544f525d324a10de5ff688867238cc5f413a2f0a3dfb951e0d0a12b206bbef7c98";
+            var cfg = new Config
+            {
+                VkToken = "1c90280145a6a26a4bf544f525d324a10de5ff688867238cc5f413a2f0a3dfb951e0d0a12b206bbef7c98"
+            };
 
-            WordsComparer comparer = new WordsComparer(0.525);
+            var comparer = new WordsComparer(0.525);
             var commands = new List<NastyaCommand>();
 
-            HelpCommand help = new HelpCommand();
-            help.CommandId = "HelpCommand";
-            help.HelpString = "somehelpstring";
-            help.Priority = 1;
-            help.Type = CommandType.Info;
+            var help = new HelpCommand
+            {
+                CommandId = "HelpCommand",
+                HelpString = "somehelpstring",
+                Priority = 1,
+                Type = CommandType.Info,
+                Sequences = new List<WordSequence>()
+                {
+                    new WordSequence(
+                        comparer,
+                        SequenceType.Disordered,
+                        new String[]
+                        {
+                            "помоги"
+                        } )
+                }
+            };
 
 
-            help.Sequences = new List<WordSequence>()
-                    {
-                        new WordSequence(comparer,SequenceType.Disordered, new String[]{ "помоги"})
-                    };
             commands.Add(help);
 
 

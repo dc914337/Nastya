@@ -11,8 +11,7 @@ namespace Nastya.Nastya.Messenger.UserId
         bool Equals( object obj );
 
         string ToString();
-
-
+        
         int GetHashCode();
     }
 }
