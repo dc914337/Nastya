@@ -17,6 +17,17 @@ namespace Nastya.Utils.Datatypes
             _percents = percents;
         }
 
+
+        //Value MUST be more than minBound and less than maxBound
+        public static Percents CountPercents(double minBound, double maxBound, double value)
+        {
+            var newMaxBound = (maxBound - minBound);
+            var newMinBound = 0;
+            var newValue = value - minBound;
+            var res = (Percents.MaxValue - Percents.MinValue) / newMaxBound * newValue;
+            return new Percents(res);
+        }
+
         public static Percents operator +(Percents c1, Percents c2)
         {
             double res = c1._percents + c2._percents;
