@@ -78,7 +78,11 @@
     <Compile Include="Nastya\Executors\ContextContainers\CommonContextContainer.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\ContextContainer.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\Contexts\BaseContext.cs" />
-    <Compile Include="Nastya\Executors\ContextContainers\Contexts\DayContext.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\DayContext.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Schedule.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Tasks\QuestionTask.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Tasks\ReminderTask.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Tasks\ScheduleTask.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\Contexts\RandomContext.cs" />
     <Compile Include="Nastya\Executors\ContextManagement\ContextManager.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\UserContextsContainer.cs" />

@@ -10,7 +10,6 @@ namespace Nastya.Nastya.Executors.ContextManagement
         private Dictionary<Contexts, ContextContainer> _allContexts = new Dictionary<Contexts, ContextContainer>();
 
         public T GetOrCreateContext<T>(Contexts key)
-
             where T : BaseContext, new()
         {
             if (_allContexts.ContainsKey(key))
