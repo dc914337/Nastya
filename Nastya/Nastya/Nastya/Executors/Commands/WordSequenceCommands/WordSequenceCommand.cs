@@ -14,7 +14,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 {
     public abstract class WordSequenceCommand : NastyaCommand
     {
-        private static int longestPossibleWordsSequance = 100;
+        private const int LongestPossibleWordsSequance = 100;
 
         public List<WordSequence> Sequences { get; set; } //sort sequences
 
@@ -30,7 +30,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
             var longestFittingSeq = GetLongestFittingSequence(words);
             if (longestFittingSeq == null)
                 return new CheckResult(Fits.DoesNot);
-            var result = new CheckResult(Fits.Probably, Percents.CountPercents(0, longestPossibleWordsSequance, longestFittingSeq.Sequence.Length));
+            var result = new CheckResult(Fits.Probably, Percents.CountPercents(0, LongestPossibleWordsSequance, longestFittingSeq.Sequence.Length));
             return result;
         }
 
@@ -48,7 +48,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
             }
             return maxSequence;
         }
-        
+
         protected String GetRandomStringFromList(string[] responses)
         {
             var num = ContextManager.GetOrCreateContext<RandomContext>(Contexts.GlobalContext).Rnd.Next(0, responses.Length);

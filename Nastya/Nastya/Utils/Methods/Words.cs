@@ -23,7 +23,7 @@ namespace Nastya.Utils.Methods
             return sb.ToString();
         }
 
-        private static char[] delimiters = new char[] { '\r', '\n', ' ' };
+        private static char[] delimiters = new char[] { '\r', '\n', ' '};
 
         public static string[] GetCleanWords(String str)
         {
