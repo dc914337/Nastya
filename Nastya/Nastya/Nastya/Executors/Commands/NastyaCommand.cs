@@ -28,12 +28,12 @@ namespace Nastya.Nastya.Executors.Commands
 
         public virtual void OnLoad()
         {
-            Logger.Out("Command {0} loaded and ready", MessageType.Debug, CommandId);
+            Logger.Out("Command {0} loaded and ready", MessageType.Debug, CommandName);
         }
 
 
         public int Priority { get; set; }
-        public string CommandId { get; set; }
+        public string CommandName { get; set; }
         public CommandType Type { get; set; }
 
         public abstract Task<bool> Execute(Message command);

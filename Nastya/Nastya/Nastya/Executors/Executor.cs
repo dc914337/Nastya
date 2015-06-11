@@ -44,7 +44,7 @@ namespace Nastya.Nastya.Executors
             }
             else
             {
-                Logger.Out("Found command: {0}. Source MessageBody: {1}", MessageType.Debug, selectedCommand.CommandId, message.MessageBody);
+                Logger.Out("Found command: {0}. Source MessageBody: {1}", MessageType.Debug, selectedCommand.CommandName, message.MessageBody);
                 selectedCommand.Execute(message);
             }
 

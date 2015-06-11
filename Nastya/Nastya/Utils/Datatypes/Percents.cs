@@ -8,9 +8,9 @@ namespace Nastya.Utils.Datatypes
 {
     public class Percents
     {
-        private static double MaxValue = 100;
-        private static double MinValue = 0;
-        private double _percents;
+        public const double MaxValue = 100;
+        public const double MinValue = 0;
+        private readonly double _percents;
 
         public Percents(double percents)
         {

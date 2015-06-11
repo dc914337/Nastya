@@ -81,7 +81,7 @@ namespace Nastya
 
             var help = new HelpCommand
             {
-                CommandId = "HelpCommand",
+                CommandName = "HelpCommand",
                 HelpString = "somehelpstring",
                 Priority = 1,
                 Type = CommandType.Info,
@@ -103,14 +103,14 @@ namespace Nastya
 
 
             ChitChatCommand chat = new ChitChatCommand();
-            chat.CommandId = "ChitChatCommand";
+            chat.CommandName = "ChitChatCommand";
             chat.Priority = 0;
             chat.Responses = new string[] { "норм", "неплохо", "кек", "лол" };
             chat.Type = CommandType.Dialog;
             //commands.Add(chat);
 
             HelloCommand hi = new HelloCommand();
-            hi.CommandId = "HelloCommand";
+            hi.CommandName = "HelloCommand";
             hi.Priority = 2;
             hi.Type = CommandType.Dialog;
             hi.Responses = new string[] { "утро", "доброе утро" };
@@ -122,7 +122,7 @@ namespace Nastya
             //commands.Add(hi);
 
             ByeCommand bye = new ByeCommand();
-            bye.CommandId = "ByeCommand";
+            bye.CommandName = "ByeCommand";
             bye.Priority = 2;
             bye.Type = CommandType.Dialog;
             bye.Responses = new string[] { "пока", "спокойной ночи", "сладких" };
@@ -134,7 +134,7 @@ namespace Nastya
             //commands.Add(bye);
 
             ByeCommand rudeBye = new ByeCommand();
-            rudeBye.CommandId = "RudeByeCommand";
+            rudeBye.CommandName = "RudeByeCommand";
             rudeBye.Priority = 2;
             rudeBye.Type = CommandType.Dialog;
             rudeBye.Responses = new string[] { "уебывай", "иди нахуй", "съеби" };

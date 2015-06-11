@@ -11,7 +11,7 @@ namespace Nastya.Nastya.Executors
     interface INastyaCommand
     {
         int Priority { get; }
-        String CommandId { get; }
+        String CommandName { get; }
         CommandType Type { get; }
         Task<bool> Execute(Message command);
         CheckResult CheckCommandFits(Message command);

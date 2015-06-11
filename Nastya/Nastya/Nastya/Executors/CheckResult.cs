@@ -19,7 +19,16 @@ namespace Nastya.Nastya.Executors
         public CheckResult(Fits fits)
         {
             Fits = fits;
-            PercentsFits = new Percents(0);
+            switch (fits)
+            {
+                case Fits.DoesNot:
+                case Fits.Probably:
+                    PercentsFits = new Percents(0);
+                    break;
+                case Fits.Perfectly:
+                    PercentsFits = new Percents(Percents.MaxValue);
+                    break;
+            }
         }
 
         public Percents PercentsFits { get; }
