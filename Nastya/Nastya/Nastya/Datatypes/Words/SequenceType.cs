@@ -1,4 +1,4 @@
-namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence
+namespace Nastya.Nastya.Datatypes.Words
 {
     public enum SequenceType
     {

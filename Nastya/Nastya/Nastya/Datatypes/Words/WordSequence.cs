@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence;
-using Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence.Comparer;
+using Nastya.Nastya.Datatypes.Words.Comparer;
 
-namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence
+namespace Nastya.Nastya.Datatypes.Words
 {
     public class WordSequence
     {

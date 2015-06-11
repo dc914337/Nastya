@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence;
+using Nastya.Nastya.Datatypes.Words;
 using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks;
 using Nastya.Nastya.Executors.ContextManagement;

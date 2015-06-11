@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence.Comparer
+namespace Nastya.Nastya.Datatypes.Words.Comparer
 {
     public static class LevenshteinDistance
     {
