@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Nastya.Nastya.Executors;
+using Nastya.Nastya.Executors.Commands.AnswerCommands;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands;
 using Nastya.Nastya.Executors.ContextContainers;
@@ -17,6 +18,7 @@ namespace Nastya.Nastya.Executors.Commands
     [XmlInclude(typeof(ChitChatCommand))]
     [XmlInclude(typeof(HelloCommand))]
     [XmlInclude(typeof(ByeCommand))]
+    [XmlInclude(typeof(AnswerCommand))]
     public abstract class NastyaCommand : INastyaCommand, IComparable<NastyaCommand>
     {
         public NastyaCommand()
@@ -24,7 +26,7 @@ namespace Nastya.Nastya.Executors.Commands
             //for xml serializer
         }
 
-        public void OnLoad()
+        public virtual void OnLoad()
         {
             Logger.Out("Command {0} loaded and ready", MessageType.Debug, CommandId);
         }
