@@ -24,12 +24,12 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
             var userContext = GetDayContext(userId);
 
             String response = GetRandomStringFromList(
-               userContext.Greeted ?
+               userContext.DayStarted ?
                  AlreadyGreetedResponses :
                  Responses);
             try
             {
-                userContext.Greeted = true;
+                userContext.DayStarted = true;
                 await command.Source.SendMessage(response, userId);
             }
             catch (Exception ex)

@@ -21,7 +21,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
 
             String response = GetRandomStringFromList(Responses);
 
-            userContext.Greeted = false;
+            userContext.DayStarted = false;
             await command.Source.SendMessage(response, command.From);
             return true;
         }

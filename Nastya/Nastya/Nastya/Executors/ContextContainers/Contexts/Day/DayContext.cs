@@ -8,14 +8,24 @@ namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day
 {
     public class DayContext : BaseContext
     {
-        public bool Greeted { get; set; } = false;
-        private Schedule _schedule = new Schedule();
-        private Thread _scheduleThread;
-        
-        public void AddTaskToSchedule(ScheduleTask task)
+
+        private bool _dayStarted = false;
+        public bool DayStarted
         {
-            _schedule.AddTask(task);
+            get
+            {
+                return _dayStarted;
+            }
+            set
+            {
+                _dayStarted = value;
+                if (_dayStarted)
+                    Kicker.Start();
+                else
+                    Kicker.Stop();
+            }
         }
 
+        public Kicker Kicker = new Kicker();
     }
 }

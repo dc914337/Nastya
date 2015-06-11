@@ -4,7 +4,7 @@ using Nastya.Nastya.Executors.ContextContainers.Contexts.Day;
 
 namespace Nastya.Nastya.Executors.ContextContainers.Contexts
 {
-    [XmlInclude(typeof(DayContext))]
+    //[XmlInclude(typeof(DayContext))]
     public class RandomContext : BaseContext
     {
         public Random Rnd { get; }
