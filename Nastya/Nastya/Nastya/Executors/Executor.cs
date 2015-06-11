@@ -20,6 +20,7 @@ namespace Nastya.Nastya.Executors
             foreach (var command in _nastyaCommands)
             {
                 command.ContextManager = contextManager;
+                command.OnLoad();
             }
             Array.Sort(_nastyaCommands);
             Array.Reverse(_nastyaCommands);
@@ -65,7 +66,7 @@ namespace Nastya.Nastya.Executors
                     break;
                 }
 
-                if ( priorCommand != null && checkResult.PercentsFits <= maxRate ) continue;
+                if (priorCommand != null && checkResult.PercentsFits <= maxRate) continue;
                 priorCommand = nastyaCommand;
                 maxRate = checkResult.PercentsFits;
             }

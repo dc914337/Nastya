@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Nastya\Configs\Serializer.cs" />
     <Compile Include="Nastya\Configs\Mapper\XMLSerializer.cs" />
+    <Compile Include="Nastya\Executors\Commands\AnswerCommands\AnswerCommand.cs" />
     <Compile Include="Nastya\Executors\Commands\WordSequenceCommands\DayCommands\ByeCommand.cs" />
     <Compile Include="Nastya\Executors\Commands\WordSequenceCommands\ChitChatCommand.cs" />
     <Compile Include="Nastya\Executors\Commands\WordSequenceCommands\DayCommands\DayCommand.cs" />

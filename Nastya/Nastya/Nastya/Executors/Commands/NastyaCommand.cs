@@ -8,6 +8,7 @@ using Nastya.Nastya.Executors.Commands.WordSequenceCommands;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands;
 using Nastya.Nastya.Executors.ContextContainers;
 using Nastya.Nastya.Executors.ContextManagement;
+using Nastya.Nastya.Log;
 using Nastya.Nastya.Messenger;
 
 namespace Nastya.Nastya.Executors.Commands
@@ -22,6 +23,12 @@ namespace Nastya.Nastya.Executors.Commands
         {
             //for xml serializer
         }
+
+        public void OnLoad()
+        {
+            Logger.Out("Command {0} loaded and ready", MessageType.Debug, CommandId);
+        }
+
 
         public int Priority { get; set; }
         public string CommandId { get; set; }
