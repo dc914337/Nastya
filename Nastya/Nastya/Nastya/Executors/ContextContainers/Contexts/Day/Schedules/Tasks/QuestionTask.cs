@@ -8,7 +8,6 @@ namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks
     {
         public List<String> NevermindSentences { get; set; }//what to answer if we are stopping waiting for the answer
         public int ExpirationTimeSecs { get; set; } //how many time to wait for the answer
-
         protected DateTime Expires { get; set; }
     }
 }
