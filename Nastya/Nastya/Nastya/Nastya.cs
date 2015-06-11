@@ -16,7 +16,7 @@ namespace Nastya.Nastya
 {
     public class Nastya
     {
-        private const int TimeCheckMessages = 5000;
+        private const int TimeCheckMessages = 1000;
 
         private const int TimeBetweenMessages = 1000;
 

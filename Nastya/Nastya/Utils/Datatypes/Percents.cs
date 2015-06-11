@@ -22,7 +22,6 @@ namespace Nastya.Utils.Datatypes
         public static Percents CountPercents(double minBound, double maxBound, double value)
         {
             var newMaxBound = (maxBound - minBound);
-            var newMinBound = 0;
             var newValue = value - minBound;
             var res = (Percents.MaxValue - Percents.MinValue) / newMaxBound * newValue;
             return new Percents(res);

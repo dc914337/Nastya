@@ -44,6 +44,8 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence
             }
         }
 
+        
+
         private bool ChechDisorderedSequence(IEnumerable<string> inputSeq)
         {
             return Sequence.All(word => inputSeq.FirstOrDefault(inputWord => Comparer.Equal(word, inputWord)) != null);
@@ -72,5 +74,7 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.Wordseqence
 
             return success;
         }
+
+
     }
 }

@@ -67,9 +67,7 @@ namespace Nastya
                 Console.WriteLine(count);
             } while (true);
         }
-
-
-
+        
 
         static String CreateSampleConfig()
         {

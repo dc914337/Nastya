@@ -18,6 +18,7 @@ namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day
         {
             Logger.Out("Started kicker", MessageType.Debug);
             _kickerThread = new Thread(ProcessTasks);
+            //todo check if started
             _kickerThread.Start();
         }
 

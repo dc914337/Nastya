@@ -8,6 +8,7 @@ using Nastya.Nastya.Executors.ContextContainers.Contexts;
 using Nastya.Nastya.Executors.ContextManagement;
 using Nastya.Nastya.Messenger;
 using Nastya.Utils.Datatypes;
+using Nastya.Utils.Methods;
 
 namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 {
@@ -24,7 +25,8 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
 
         public override CheckResult CheckCommandFits(Message command)
         {
-            var words = GetCleanWords(command.MessageBody);
+            var words = Words.GetCleanWords(command.MessageBody);
+
             var longestFittingSeq = GetLongestFittingSequence(words);
             if (longestFittingSeq == null)
                 return new CheckResult(Fits.DoesNot);
@@ -46,36 +48,11 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands
             }
             return maxSequence;
         }
-
-
-        private static String GetCleanText(String text)
-        {
-            return CollectStringFromArray(text.Trim().Where(a => !Char.IsSymbol(a)));
-        }
-
-        private static String CollectStringFromArray(IEnumerable<char> array)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (var c in array)
-            {
-                sb.Append(c);
-            }
-            return sb.ToString();
-        }
-
-        private static char[] delimiters = new char[] { '\r', '\n', ' ' };
-        private static string[] GetCleanWords(String str)
-        {
-            var removedSymbols = GetCleanText(str);
-            var words = removedSymbols.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).Where(a => !String.IsNullOrWhiteSpace(a)).Select(a => a.Trim()).ToArray();
-            return words;
-        }
-
+        
         protected String GetRandomStringFromList(string[] responses)
         {
             var num = ContextManager.GetOrCreateContext<RandomContext>(Contexts.GlobalContext).Rnd.Next(0, responses.Length);
             return responses[num];
         }
-
     }
 }
