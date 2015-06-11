@@ -14,11 +14,10 @@ namespace Nastya.Nastya.Executors.Commands.AnswerCommands
 {
     public class AnswerCommand : NastyaCommand
     {
-        public List<WordSequence> RefuceSequences { get; set; }
-        public List<WordSequence> AcceptSequences { get; set; }
-        public List<WordSequence> SkipSequences { get; set; }
-        public QuestionTask Task { get; set; }
-
+        public WordSequences RefuceSequences { get; set; }
+        public WordSequences AcceptSequences { get; set; }
+        public WordSequences SkipSequences { get; set; }
+        public QuestionTask Question { get; set; } = new QuestionTask();
 
         protected AnswerContext AnswerContext { get; set; }
 
@@ -36,10 +35,16 @@ namespace Nastya.Nastya.Executors.Commands.AnswerCommands
 
         public override CheckResult CheckCommandFits(Message command)
         {
-            if (AnswerContext.AskedQuestion != Task)  //if not our task asked question then return false
+            if (AnswerContext.AskedQuestion != Question)  //if not our task asked question then return that command does not fits
                 return new CheckResult(Fits.DoesNot);
-            return null;//stub
-            // if(RefuceSequences.)
+
+            String message = command.MessageBody;
+
+            if (RefuceSequences.GetLongestFittingSequence(message) != null
+                 || AcceptSequences.GetLongestFittingSequence(message) != null
+                 || SkipSequences.GetLongestFittingSequence(message) != null)
+                return new CheckResult(Fits.Perfectly);
+            return new CheckResult(Fits.DoesNot);
         }
     }
 }

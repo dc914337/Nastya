@@ -8,8 +8,10 @@ using Nastya.Nastya.Datatypes.Words;
 using Nastya.Nastya.Datatypes.Words.Comparer;
 using Nastya.Nastya.Executors;
 using Nastya.Nastya.Executors.Commands;
+using Nastya.Nastya.Executors.Commands.AnswerCommands;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands;
+using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks;
 using Nastya.Nastya.Log;
 using Nastya.Nastya.Messenger;
 using Nastya.Nastya.Messenger.UserId;
@@ -101,7 +103,80 @@ namespace Nastya
             };
 
 
-            commands.Add(help);
+            var answerWakeUp = new AnswerCommand()
+            {
+                CommandName = "WakeUpAnswer",
+                Priority = 1,
+                Type = CommandType.Info,
+                Question = new QuestionTask()
+                {
+                    DelayFromDayStartSecs = 200,
+                    ExpirationTimeSecs = 2000,
+                    Messages = new List<String>
+                    {
+                        "Вставай, пидар",
+                        "Тебе следует встать",
+                        "Ты уже встал?"
+                    },
+                    NevermindSentences = new List<string>
+                    {
+                         "Ну и лежи дальше блядь. Ты умрешь в одиночестве"
+                    }
+                }
+                ,
+                AcceptSequences = new WordSequences()
+                {
+                    Sequences = new List<WordSequence>()
+                 {
+                     new WordSequence(
+                         comparer,
+                         SequenceType.Ordered,
+                         new String[]
+                         {
+                             "да",
+                             "Встаю"
+                         } )
+                 }
+                },
+                RefuceSequences = new WordSequences()
+                {
+                    Sequences = new List<WordSequence>()
+                 {
+                     new WordSequence(
+                         comparer,
+                         SequenceType.Disordered,
+                         new String[]
+                         {
+                             "проваливай"
+                         }),
+                         new WordSequence(
+                         comparer,
+                         SequenceType.Ordered,
+                         new String[]
+                         {
+                             "не",
+                             "встану"
+                         })
+                 }
+                },
+                SkipSequences = new WordSequences()
+                {
+                    Sequences = new List<WordSequence>()
+                 {
+                     new WordSequence(
+                         comparer,
+                         SequenceType.Disordered,
+                         new String[]
+                         {
+                             "иди",
+                             "нахуй"
+                         } )
+                 }
+                }
+            };
+
+
+            commands.Add(answerWakeUp);
 
 
             /*
@@ -140,7 +215,7 @@ namespace Nastya
              rudeBye.CommandName = "RudeByeCommand";
              rudeBye.Priority = 2;
              rudeBye.Type = CommandType.Dialog;
-             rudeBye.Responses = new string[] { "уебывай", "иди нахуй", "съеби" };
+             rudeBye.Responses = new string[] { "уебывай" };
              rudeBye.WordSequences = new List<WordSequence>()
                      {
                          new WordSequence(comparer, SequenceType.Disordered, new String[] { "иди", "нахуй" }),

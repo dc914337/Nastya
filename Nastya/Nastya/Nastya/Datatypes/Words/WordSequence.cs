@@ -9,9 +9,8 @@ namespace Nastya.Nastya.Datatypes.Words
     {
         public String[] Sequence { get; set; }
         public SequenceType Type { get; set; }
-
         public WordsComparer Comparer { get; set; }
-
+        
 
         public WordSequence()
         {
