@@ -10,7 +10,7 @@ using Nastya.Nastya.Messenger.UserId;
 
 namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks
 {
-    class ScheduleTask
+    public class ScheduleTask
     {
         public TaskType Type { get; set; }      //i need this to avoid too many reflection
         public ScheduleEvent Event { get; set; }
@@ -31,6 +31,7 @@ namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks
         public void Execute(DayContext dayContext)
         {
             Event.Execute(dayContext.Messenger, dayContext.UserId);
+            Executed = true;
         }
 
     }

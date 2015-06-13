@@ -94,6 +94,11 @@ namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day
         {
             schedule.Sort((a, b) => DateTime.Compare(a.AskTime.Value, b.AskTime.Value)); //can't be null
         }
+
+        public ScheduleTask GetTaskByEvent(ScheduleEvent scheduleEvent)
+        {
+            return _schedule.FirstOrDefault( a => a.Event == scheduleEvent );
+        }
     }
 
 

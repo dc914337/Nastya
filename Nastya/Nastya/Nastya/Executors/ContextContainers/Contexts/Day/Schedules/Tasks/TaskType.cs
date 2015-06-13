@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks
 {
-    enum TaskType
+    public enum TaskType
     {
         QuestionTask,
         NotificationTask

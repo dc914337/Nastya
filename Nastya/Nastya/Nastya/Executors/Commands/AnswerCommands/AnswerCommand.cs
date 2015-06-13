@@ -27,15 +27,6 @@ namespace Nastya.Nastya.Executors.Commands.AnswerCommands
             base.OnLoad();
         }
 
-        public override Task<bool> Execute(Message command)
-        {
-            var dayContext = ContextManager.GetOrCreateUsersContext<DayContext>(Contexts.DayContext, command.From);
-            var answerContext = ContextManager.GetOrCreateUsersContext<AnswerContext>(Contexts.AnswerContext, command.From);
-            answerContext.AskedQuestion = null;
-
-            return null;
-        }
-
         public override CheckResult CheckCommandFits(Message command)
         {
             var answerContext = ContextManager.GetOrCreateUsersContext<AnswerContext>(Contexts.AnswerContext, command.From);
@@ -44,11 +35,77 @@ namespace Nastya.Nastya.Executors.Commands.AnswerCommands
 
             String message = command.MessageBody;
 
-            if (RefuceSequences.GetLongestFittingSequence(message) != null
-                 || AcceptSequences.GetLongestFittingSequence(message) != null
-                 || SkipSequences.GetLongestFittingSequence(message) != null)
+            if (InputSequence(message) != SequenceType.Unrecognised)
                 return new CheckResult(Fits.Perfectly);
+
             return new CheckResult(Fits.DoesNot);
+        }
+
+        private SequenceType InputSequence(String message)
+        {
+            if (AcceptSequences.GetLongestFittingSequence(message) != null)
+                return SequenceType.AcceptSequences;
+
+            if (RefuceSequences.GetLongestFittingSequence(message) != null)
+                return SequenceType.RefuceSequences;
+
+            if (SkipSequences.GetLongestFittingSequence(message) != null)
+                return SequenceType.SkipSequences;
+
+            return SequenceType.Unrecognised;
+        }
+
+        public override Task<bool> Execute(Message command)
+        {
+            String message = command.MessageBody;
+            var dayContext = ContextManager.GetOrCreateUsersContext<DayContext>(Contexts.DayContext, command.From);
+            var answerContext = ContextManager.GetOrCreateUsersContext<AnswerContext>(Contexts.AnswerContext, command.From);
+
+            switch (InputSequence(message))
+            {
+                case SequenceType.AcceptSequences:
+                    DoAccept();
+                    break;
+                case SequenceType.RefuceSequences:
+                    DoRefuce(dayContext);
+                    break;
+                case SequenceType.SkipSequences:
+                    DoSkip();
+                    break;
+                default:
+                    Logger.Out("WTF? It can't be. Executing unrecognisable sequnce. Message: {0}, Type: {1}", MessageType.Error, message, InputSequence(message));
+                    break;
+            }
+
+            answerContext.AskedQuestion = null;
+            return null;
+        }
+
+        private void DoRefuce(DayContext dayContext)
+        {
+            //reask question later
+            Logger.Out("User refuced {0} question", MessageType.Verbose, CommandName);
+            //reschedule
+            var task = dayContext.Kicker.GetTaskByEvent(Question);
+            task.AskTime = DateTime.Now.AddSeconds(15);
+            task.Executed = false;
+        }
+        private void DoAccept()
+        {
+            Logger.Out("User accepted {0} question", MessageType.Verbose, CommandName);
+        }
+        private void DoSkip()
+        {
+            Logger.Out("User skipped {0} question", MessageType.Verbose, CommandName);
+        }
+
+
+        enum SequenceType
+        {
+            RefuceSequences,
+            AcceptSequences,
+            SkipSequences,
+            Unrecognised
         }
 
     }
