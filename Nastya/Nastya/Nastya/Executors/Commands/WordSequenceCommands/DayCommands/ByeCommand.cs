@@ -17,11 +17,12 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
 
         public override async Task<bool> Execute(Message command)
         {
-            var userContext = GetDayContext(command.From);
+            var userContext = GetDayContext(command);
 
             String response = GetRandomStringFromList(Responses);
 
             userContext.DayStarted = false;
+            userContext.Kicker.Stop();
             await command.Source.SendMessage(response, command.From);
             return true;
         }

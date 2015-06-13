@@ -82,9 +82,12 @@
     <Compile Include="Nastya\Executors\ContextContainers\Contexts\AnswerContext.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\Contexts\BaseContext.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\DayContext.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\CommonScheduleContext.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Kicker.cs" />
-    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Tasks\QuestionTask.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Events\QuestionEvent.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Events\ScheduleEvent.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Tasks\ScheduleTask.cs" />
+    <Compile Include="Nastya\Executors\ContextContainers\Contexts\Day\Schedules\Tasks\TaskType.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\Contexts\RandomContext.cs" />
     <Compile Include="Nastya\Executors\ContextManagement\ContextManager.cs" />
     <Compile Include="Nastya\Executors\ContextContainers\UserContextsContainer.cs" />

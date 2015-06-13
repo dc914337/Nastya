@@ -11,6 +11,7 @@ using Nastya.Nastya.Executors.Commands;
 using Nastya.Nastya.Executors.Commands.AnswerCommands;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands;
 using Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands;
+using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Events;
 using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks;
 using Nastya.Nastya.Log;
 using Nastya.Nastya.Messenger;
@@ -22,9 +23,7 @@ namespace Nastya
     {
         static void Main(string[] args)
         {
-
             //Console.WriteLine(CreateSampleConfig());
-
             //Thread addThread = new Thread(() => AddToStackThread(stack));
             //Thread foreachThread = new Thread(() => ForeachThread(stack));
             //addThread.Start();
@@ -108,7 +107,7 @@ namespace Nastya
                 CommandName = "WakeUpAnswer",
                 Priority = 1,
                 Type = CommandType.Info,
-                Question = new QuestionTask()
+                Question = new QuestionEvent()
                 {
                     DelayFromDayStartSecs = 200,
                     ExpirationTimeSecs = 2000,

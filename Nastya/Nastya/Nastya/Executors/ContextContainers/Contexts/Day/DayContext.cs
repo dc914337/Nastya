@@ -1,31 +1,19 @@
 ﻿
 
-using System.Threading;
-using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules;
-using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks;
+using System.Runtime.Remoting.Messaging;
+using Nastya.Nastya.Executors.ContextManagement;
+using Nastya.Nastya.Messenger;
+using Nastya.Nastya.Messenger.UserId;
 
 namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day
 {
     public class DayContext : BaseContext
     {
-
         private bool _dayStarted = false;
-        public bool DayStarted
-        {
-            get
-            {
-                return _dayStarted;
-            }
-            set
-            {
-                _dayStarted = value;
-                if (_dayStarted)
-                    Kicker.Start();
-                else
-                    Kicker.Stop();
-            }
-        }
+        public bool DayStarted { get; set; }
+        public IUserId UserId { get; set; }
+        public IMessenger Messenger { get; set; }
 
-        public Kicker Kicker = new Kicker();
+        public Kicker Kicker { get; set; } = new Kicker();
     }
 }

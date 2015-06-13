@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Events;
 using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Tasks;
 using Nastya.Nastya.Log;
+using Nastya.Nastya.Messenger;
+using Nastya.Nastya.Messenger.UserId;
 
 namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day
 {
@@ -13,43 +17,85 @@ namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day
     {
         List<ScheduleTask> _schedule = new List<ScheduleTask>();
         private Thread _kickerThread;
+        private DateTime _dayStarted;
+        private AnswerContext _answerContext;
+        private DayContext _dayContext;
 
-        public void Start()
+
+        public void Start(IEnumerable<ScheduleEvent> events, AnswerContext answerContext, DayContext dayContext)
         {
             Logger.Out("Started kicker", MessageType.Debug);
-            _kickerThread = new Thread(ProcessTasks);
-            //todo check if started
+            AddTasksToSchedule(events);
+            _answerContext = answerContext;
+            _dayContext = dayContext;
+
+            if (_kickerThread != null && _kickerThread.IsAlive) return;
+            _kickerThread = new Thread(() => ProcessTasks(this));
+            _dayStarted = DateTime.Now;
             _kickerThread.Start();
         }
+
+        private void AddTasksToSchedule(IEnumerable<ScheduleEvent> events)
+        {
+            foreach (var scheduleEvent in events)
+            {
+                _schedule.Add(new ScheduleTask(scheduleEvent));
+            }
+        }
+
 
         public void Stop()
         {
             Logger.Out("Stopped kicker", MessageType.Debug);
-            //todo check if thread is running
-            _kickerThread.Abort();
+            if (_kickerThread.IsAlive)
+                _kickerThread.Abort();
         }
 
-        public void AddTask(ScheduleTask task)
-        {
-            //todo make threadsafe
-            _schedule.Add(task);
-        }
+        //---------------
 
-        public void RemoveTask()
+        private static void ProcessTasks(Kicker kicker)
         {
-            //todo make threadsafe
-
-        }
-
-        private static void ProcessTasks()
-        {
-            //stub
-            int count = 0;
+            List<ScheduleTask> schedule = kicker._schedule;
+            var answerContext = kicker._answerContext;
+            var dayContext = kicker._dayContext;
             do
             {
-                Logger.Out("Kicker kicking {0}", MessageType.Verbose, count++);
-                Thread.Sleep(1000);
+                SetUnsetTimes(schedule, kicker._dayStarted);
+                var nextTask = GetTaskToExecute(schedule, answerContext);
+
+                if (nextTask == null)
+                {
+                    Thread.Sleep(1000);
+                    Logger.Out("Tick", MessageType.Debug);
+                    continue;
+                }
+                nextTask.Execute(dayContext);
+                if (nextTask.Event.GetType() == typeof(QuestionEvent))
+                    answerContext.AskedQuestion = (QuestionEvent)nextTask.Event;
             } while (true);
+
+        }
+
+        private static ScheduleTask GetTaskToExecute(List<ScheduleTask> schedule, AnswerContext answerContext)
+        {
+            Sort(schedule);
+            return schedule.FirstOrDefault(a => !a.Executed && a.AskTime <= DateTime.Now && answerContext.AskedQuestion == null);
+        }
+
+        private static void SetUnsetTimes(List<ScheduleTask> schedule, DateTime dayStarted)
+        {
+            foreach (var task in schedule.Where(task => task.AskTime == null))
+            {
+                task.AskTime = dayStarted.AddSeconds(task.Event.DelayFromDayStartSecs);
+            }
+        }
+
+        private static void Sort(List<ScheduleTask> schedule)
+        {
+            schedule.Sort((a, b) => DateTime.Compare(a.AskTime.Value, b.AskTime.Value)); //can't be null
         }
     }
+
+
+
 }

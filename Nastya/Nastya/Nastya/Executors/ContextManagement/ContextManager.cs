@@ -7,6 +7,7 @@ namespace Nastya.Nastya.Executors.ContextManagement
 {
     public class ContextManager
     {
+        //todo threadsafe
         private Dictionary<Contexts, ContextContainer> _allContexts = new Dictionary<Contexts, ContextContainer>();
 
         public T GetOrCreateContext<T>(Contexts key)

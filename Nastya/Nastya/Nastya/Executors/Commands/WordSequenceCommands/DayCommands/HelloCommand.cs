@@ -2,6 +2,9 @@
 using System.Threading.Tasks;
 using Nastya.Nastya.Executors.Commands;
 using Nastya.Nastya.Executors.ContextContainers;
+using Nastya.Nastya.Executors.ContextContainers.Contexts;
+using Nastya.Nastya.Executors.ContextContainers.Contexts.Day;
+using Nastya.Nastya.Executors.ContextManagement;
 using Nastya.Nastya.Log;
 using Nastya.Nastya.Messenger;
 
@@ -20,16 +23,22 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
         public async override Task<bool> Execute(Message command)
         {
             var userId = command.From;
-
-            var userContext = GetDayContext(userId);
+            var userContext = GetDayContext(command);
+            
 
             String response = GetRandomStringFromList(
                userContext.DayStarted ?
                  AlreadyGreetedResponses :
                  Responses);
+
+            userContext.DayStarted = true;
+            userContext.Kicker.Start(
+                ContextManager.GetOrCreateContext<CommonScheduleContext>(Contexts.CommonScheduleContext).DefaultSchedule,
+                ContextManager.GetOrCreateUsersContext<AnswerContext>(Contexts.AnswerContext, userId),
+                ContextManager.GetOrCreateUsersContext<DayContext>(Contexts.DayContext, userId)
+                );
             try
             {
-                userContext.DayStarted = true;
                 await command.Source.SendMessage(response, userId);
             }
             catch (Exception ex)
@@ -39,6 +48,12 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
 
             return true;
         }
+
+        private void InitDayContextIfNotInited(Message command)
+        {
+            
+        }
+
 
 
 

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Nastya.Nastya.Executors.Commands;
 using Nastya.Nastya.Executors.ContextContainers.Contexts.Day.Schedules.Events;
 
-namespace Nastya.Nastya.Executors.ContextContainers.Contexts
+namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day
 {
-    public class AnswerContext : BaseContext
+    class CommonScheduleContext : BaseContext
     {
-        public QuestionEvent AskedQuestion { get; set; }
+        public List<ScheduleEvent> DefaultSchedule { get; set; } = new List<ScheduleEvent>();
+
     }
 }

@@ -4,6 +4,7 @@ namespace Nastya.Nastya.Executors.ContextManagement
     {
         DayContext,
         GlobalContext,
-        AnswerContext
+        AnswerContext,
+        CommonScheduleContext
     }
 }

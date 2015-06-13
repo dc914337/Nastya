@@ -18,9 +18,17 @@ namespace Nastya.Nastya.Executors.Commands.WordSequenceCommands.DayCommands
     {
         public string[] Responses { get; set; }
 
-        protected DayContext GetDayContext(IUserId userId)
+        protected DayContext GetDayContext(Message message)
         {
-            return ContextManager.GetOrCreateUsersContext<DayContext>(Contexts.DayContext, userId);
+            var userId = message.From;
+            var messenger = message.Source;
+            var context = ContextManager.GetOrCreateUsersContext<DayContext>(Contexts.DayContext, userId);
+            if (context.Messenger == null || context.UserId == null)
+            {
+                context.Messenger = messenger;
+                context.UserId = userId;
+            }
+            return context;
         }
 
     }
