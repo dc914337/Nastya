@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Serialization;
 using Nastya.Nastya.Configs;
 using Nastya.Nastya.Datatypes.Words;
@@ -34,12 +35,24 @@ namespace NastyaConfigHelper
 
         private static String GenerateWordSequenceXml(WordSequence wordSequence)
         {
-            XmlSerializer xs = new XmlSerializer(typeof(WordSequence));
+            var emptyNamepsaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
 
-            MemoryStream memStream = new MemoryStream();
-            xs.Serialize(memStream, wordSequence);
+            var serializer = new XmlSerializer(typeof(WordSequence));
+            var settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.OmitXmlDeclaration = true;
 
-            return ReadStreamToString(memStream) + '\n';
+            using (var stream = new StringWriter())
+            using (var writer = XmlWriter.Create(stream, settings))
+            {
+                serializer.Serialize(writer, wordSequence, emptyNamepsaces);
+                return stream.ToString() + "\n\n\n";
+            }
+
+
+
+
+
         }
 
         private static string ReadStreamToString(Stream stream)
