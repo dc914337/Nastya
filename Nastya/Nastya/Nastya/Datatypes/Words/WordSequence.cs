@@ -10,7 +10,7 @@ namespace Nastya.Nastya.Datatypes.Words
         public String[] Sequence { get; set; }
         public SequenceType Type { get; set; }
         public WordsComparer Comparer { get; set; }
-        
+
 
         public WordSequence()
         {
@@ -33,8 +33,8 @@ namespace Nastya.Nastya.Datatypes.Words
         {
             switch (Type)
             {
-                case SequenceType.Disordered:
-                    return ChechDisorderedSequence(inputSeq);
+                case SequenceType.Unordered:
+                    return ChechUnorderedSequence(inputSeq);
                 case SequenceType.Ordered:
                     return ChechOrderedSequence(inputSeq);
                 default:
@@ -42,9 +42,9 @@ namespace Nastya.Nastya.Datatypes.Words
             }
         }
 
-        
 
-        private bool ChechDisorderedSequence(IEnumerable<string> inputSeq)
+
+        private bool ChechUnorderedSequence(IEnumerable<string> inputSeq)
         {
             return Sequence.All(word => inputSeq.FirstOrDefault(inputWord => Comparer.Equal(word, inputWord)) != null);
         }

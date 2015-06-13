@@ -92,7 +92,7 @@ namespace Nastya
                  {
                      new WordSequence(
                          comparer,
-                         SequenceType.Disordered,
+                         SequenceType.Unordered,
                          new String[]
                          {
                              "помоги"
@@ -143,7 +143,7 @@ namespace Nastya
                  {
                      new WordSequence(
                          comparer,
-                         SequenceType.Disordered,
+                         SequenceType.Unordered,
                          new String[]
                          {
                              "проваливай"
@@ -164,7 +164,7 @@ namespace Nastya
                  {
                      new WordSequence(
                          comparer,
-                         SequenceType.Disordered,
+                         SequenceType.Unordered,
                          new String[]
                          {
                              "иди",
@@ -193,8 +193,8 @@ namespace Nastya
              hi.Responses = new string[] { "утро", "доброе утро" };
              hi.WordSequences = new List<WordSequence>()
                      {
-                         new WordSequence(comparer, SequenceType.Disordered, new String[] { "доброе", "утро" }),
-                         new WordSequence(comparer, SequenceType.Disordered, new String[] { "привет"})
+                         new WordSequence(comparer, SequenceType.Unordered, new String[] { "доброе", "утро" }),
+                         new WordSequence(comparer, SequenceType.Unordered, new String[] { "привет"})
                      };
              //commands.Add(hi);
 
@@ -206,7 +206,7 @@ namespace Nastya
              bye.WordSequences = new List<WordSequence>()
                      {
                          new WordSequence(comparer, SequenceType.Ordered, new String[] { "спокойной", "ночи" }),
-                         new WordSequence(comparer, SequenceType.Disordered, new String[] { "пока"})
+                         new WordSequence(comparer, SequenceType.Unordered, new String[] { "пока"})
                      };
              //commands.Add(bye);
 
@@ -217,8 +217,8 @@ namespace Nastya
              rudeBye.Responses = new string[] { "уебывай" };
              rudeBye.WordSequences = new List<WordSequence>()
                      {
-                         new WordSequence(comparer, SequenceType.Disordered, new String[] { "иди", "нахуй" }),
-                          new WordSequence(comparer, SequenceType.Disordered, new String[] { "иди", "на","хуй" })
+                         new WordSequence(comparer, SequenceType.Unordered, new String[] { "иди", "нахуй" }),
+                          new WordSequence(comparer, SequenceType.Unordered, new String[] { "иди", "на","хуй" })
                      };
              //commands.Add(rudeBye);
 */

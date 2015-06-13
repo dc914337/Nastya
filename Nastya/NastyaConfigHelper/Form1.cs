@@ -28,7 +28,7 @@ namespace NastyaConfigHelper
         {
             WordSequence genSequence = new WordSequence();
             genSequence.Comparer = new WordsComparer((double)thresholdNud.Value);
-            genSequence.Type = orderedCbx.Checked ? SequenceType.Ordered : SequenceType.Disordered;
+            genSequence.Type = orderedCbx.Checked ? SequenceType.Ordered : SequenceType.Unordered;
             genSequence.Sequence = wordsTxt.Text.Trim().Split(' ');
             wordSequencesResultRtb.Text += GenerateWordSequenceXml(genSequence);
         }
