@@ -20,6 +20,8 @@ namespace Nastya.Nastya.Executors.Commands.AnswerCommands
         public WordSequences SkipSequences { get; set; }
         public QuestionEvent Question { get; set; } = new QuestionEvent();
 
+        public int RefuseRepeatSeconds { get; set; }
+
         public override void OnLoad()
         {
             Logger.Out("Additional onload from {0}. ", MessageType.Debug, CommandName);
