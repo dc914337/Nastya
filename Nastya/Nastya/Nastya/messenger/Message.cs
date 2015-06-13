@@ -28,7 +28,7 @@ namespace Nastya.Nastya.Messenger
             }
             return new Message(vkMessage.Body, new VkUserId(vkMessage.UserId), date, source);
         }
-        
+
 
         //mb picture
     }
