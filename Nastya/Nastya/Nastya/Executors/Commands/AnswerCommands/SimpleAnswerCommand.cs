@@ -13,7 +13,7 @@ using Nastya.Nastya.Messenger;
 
 namespace Nastya.Nastya.Executors.Commands.AnswerCommands
 {
-    public class AnswerCommand : NastyaCommand
+    public class SimpleAnswerCommand : NastyaCommand
     {
         public WordSequences RefuceSequences { get; set; }
         public WordSequences AcceptSequences { get; set; }

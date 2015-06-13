@@ -18,7 +18,7 @@ namespace Nastya.Nastya.Executors.Commands
     [XmlInclude(typeof(ChitChatCommand))]
     [XmlInclude(typeof(HelloCommand))]
     [XmlInclude(typeof(ByeCommand))]
-    [XmlInclude(typeof(AnswerCommand))]
+    [XmlInclude(typeof(SimpleAnswerCommand))]
     public abstract class NastyaCommand : INastyaCommand, IComparable<NastyaCommand>
     {
         public NastyaCommand()

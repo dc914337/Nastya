@@ -11,6 +11,8 @@ namespace Nastya.Nastya.Datatypes.Words
     {
         public List<WordSequence> Sequences { get; set; }
 
+        public String[] SequenceAnswers { get; set; }
+
         public WordSequence GetLongestFittingSequence(String message)
         {
             var words = GetCleanWords(message);
@@ -31,7 +33,7 @@ namespace Nastya.Nastya.Datatypes.Words
             }
             return maxSequence;
         }
-        
+
         private static String GetCleanText(String text)
         {
             return CollectStringFromArray(text.Trim().Where(a => !Char.IsSymbol(a)));

@@ -83,7 +83,7 @@
     <Compile Include="Nastya\Datatypes\Words\SequenceType.cs" />
     <Compile Include="Nastya\Datatypes\Words\WordSequence.cs" />
     <Compile Include="Nastya\Datatypes\Words\WordSequences.cs" />
-    <Compile Include="Nastya\Executors\Commands\AnswerCommands\AnswerCommand.cs" />
+    <Compile Include="Nastya\Executors\Commands\AnswerCommands\SimpleAnswerCommand.cs" />
     <Compile Include="Nastya\Executors\Commands\WordSequenceCommands\DayCommands\ByeCommand.cs" />
     <Compile Include="Nastya\Executors\Commands\WordSequenceCommands\ChitChatCommand.cs" />
     <Compile Include="Nastya\Executors\Commands\WordSequenceCommands\DayCommands\DayCommand.cs" />

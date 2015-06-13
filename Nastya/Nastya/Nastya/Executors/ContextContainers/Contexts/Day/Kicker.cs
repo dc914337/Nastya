@@ -15,7 +15,7 @@ namespace Nastya.Nastya.Executors.ContextContainers.Contexts.Day
 {
     public class Kicker
     {
-        List<ScheduleTask> _schedule = new List<ScheduleTask>();
+        readonly List<ScheduleTask> _schedule = new List<ScheduleTask>();
         private Thread _kickerThread;
         private DateTime _dayStarted;
         private AnswerContext _answerContext;

@@ -102,7 +102,7 @@ namespace Nastya
             };
 
 
-            var answerWakeUp = new AnswerCommand()
+            var answerWakeUp = new SimpleAnswerCommand()
             {
                 CommandName = "WakeUpAnswer",
                 Priority = 1,
